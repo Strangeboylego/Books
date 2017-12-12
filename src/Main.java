@@ -61,11 +61,13 @@ public class Main {
                 newBookname = sc.nextLine();
                 PreparedStatement statement = con.prepareStatement("UPDATE books SET bookname ='"+newBookname+"' WHERE id = '"+idToUpdate+"'");
                 statement.executeUpdate();
+                System.out.println("Book \""+booknameToUpdate+"\""+ " was updated");
             }else{
                 System.out.print("New bookname:");
                 newBookname = scan.nextLine();
                 PreparedStatement statement = con.prepareStatement("UPDATE books SET bookname ='"+newBookname+"' WHERE bookname ='"+booknameToUpdate+"'");
                 statement.executeUpdate();
+                System.out.println("Book \""+booknameToUpdate+"\""+ " was updated");
             }
 
         } catch (Exception e) {
@@ -95,10 +97,12 @@ public class Main {
                 idToRemove = scan.nextInt();
                 PreparedStatement statement = con.prepareStatement("DELETE FROM books WHERE id = '"+idToRemove+"' ");
                 statement.executeUpdate();
+                System.out.println("Book \""+booknameToRemove+"\""+ " was removed");
             }
             else {
                 PreparedStatement statement = con.prepareStatement("DELETE FROM books WHERE bookname ='"+booknameToRemove+"' ");
                 statement.executeUpdate();
+                System.out.println("Book \""+booknameToRemove+"\""+ " was removed");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -134,7 +138,7 @@ public class Main {
             Connection con = getConnection();
             PreparedStatement posted = con.prepareStatement("INSERT INTO books(author,bookname) VALUES ('"+author+"','"+bookname+"')");
             posted.executeUpdate();
-            System.out.println("Book "+author+" \""+bookname+"\""+ " was add");
+            System.out.println("Book \""+author+" \""+bookname+"\""+ " was added");
         }
         catch (Exception e){
             System.out.println(e);
